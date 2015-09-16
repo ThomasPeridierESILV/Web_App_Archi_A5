@@ -67,6 +67,7 @@ function load()
 			{
 				var vehicule = car.vehicule;
 				var finalPrice = CalculPrice(car, distance, nbDay);
+				rental.price = finalPrice;
 				//alert(totalPrice);
 				display.innerHTML += firstname + ' ' + name + ' a loué un(e) ' + vehicule + ' pour un prix total de ' + finalPrice + '€.' + '<br>';
 			}

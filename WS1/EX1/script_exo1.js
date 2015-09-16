@@ -82,6 +82,7 @@ function load()
 				var priceDistance = distance*car.pricePerKm;
 				var totalPrice =priceDay+priceDistance;
 				//alert(totalPrice);
+				rental.price = totalPrice;
 				affichage.innerHTML += firstname + ' ' + name + ' a loué un(e) ' + vehicule + ' pour un prix total de ' + totalPrice + '€.' + '<br>';
 			}
 		};
