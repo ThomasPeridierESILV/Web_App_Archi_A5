@@ -2,7 +2,7 @@
 
 function load()
 {
-	var affichage = document.getElementById('texte');
+	var display = document.getElementById('text');
 	var data = {
 	  "cars": [
 	    {
@@ -66,28 +66,42 @@ function load()
 			if(car.id == idCar)
 			{
 				var vehicule = car.vehicule;
-				if(nbDay == 1)
-				{
-					var priceDistance = distance*car.pricePerKm;
-					var priceDay = car.pricePerDay;
-					var finalPrice = priceDay+priceDistance;
-				}
-				else if(nbDay>=2 && nbDay <5)
-				{
-					var priceDistance = distance*car.pricePerKm;
-					var priceDay = car.pricePerDay + (nbDay-1)*(car.pricePerDay  - (car.pricePerDay /100)*10);
-					var finalPrice = priceDay+priceDistance;
-				}
-				else
-				{
-					var priceDistance = distance*car.pricePerKm;
-					var priceDay = car.pricePerDay + 3*(car.pricePerDay  - (car.pricePerDay /100)*10) + (nbDay-4)*(car.pricePerDay  - (car.pricePerDay /100)*30);
-					var finalPrice = priceDay+priceDistance;
-				}
+				var finalPrice = CalculPrice(car, distance, nbDay);
 				//alert(totalPrice);
-				affichage.innerHTML += firstname + ' ' + name + ' a loué un(e) ' + vehicule + ' pour un prix total de ' + finalPrice + '€.' + '<br>';
+				display.innerHTML += firstname + ' ' + name + ' a loué un(e) ' + vehicule + ' pour un prix total de ' + finalPrice + '€.' + '<br>';
 			}
 		};
 	};
 	
+};
+function CalculPrice(car, distance, nbDay)
+{
+	var priceDay;
+	var priceDistance;
+	var finalPrice;
+	if(nbDay == 1)
+	{
+		priceDistance = distance*car.pricePerKm;
+		priceDay = car.pricePerDay;
+		finalPrice = priceDay+priceDistance;
+	}
+	else if(nbDay>=2 && nbDay <5)
+	{
+		priceDistance = distance*car.pricePerKm;
+		priceDay = car.pricePerDay + (nbDay-1)*(car.pricePerDay  - (car.pricePerDay /100)*10);
+		finalPrice = priceDay+priceDistance;
+	}
+	else if(nbDay>=5 && nbDay <11)
+	{
+		priceDistance = distance*car.pricePerKm;
+		priceDay = car.pricePerDay + 3*(car.pricePerDay  - (car.pricePerDay /100)*10) + (nbDay-4)*(car.pricePerDay  - (car.pricePerDay /100)*30);
+		finalPrice = priceDay+priceDistance;
+	}
+	else
+	{
+		priceDistance = distance*car.pricePerKm;
+		priceDay = car.pricePerDay + 3*(car.pricePerDay  - (car.pricePerDay /100)*10) + 6*(car.pricePerDay  - (car.pricePerDay /100)*30) + (nbDay-10)*(car.pricePerDay  - (car.pricePerDay /100)*50);
+		finalPrice = priceDay+priceDistance;
+	}
+	return finalPrice;
 };
