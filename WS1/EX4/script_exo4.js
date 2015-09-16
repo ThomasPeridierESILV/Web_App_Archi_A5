@@ -91,12 +91,6 @@ function load()
 	
 };
 
-function CalculReduction(reduction, nbDay)
-{
-
-	return reductionPrice;
-};
-
 function CalculCommission(price, nbDay)
 {
 	var Commission = new Object();
